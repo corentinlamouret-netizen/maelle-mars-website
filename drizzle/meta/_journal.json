@@ -1,0 +1,111 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1771581315907,
+      "tag": "0000_public_morlocks",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1771581368114,
+      "tag": "0001_silent_princess_powerful",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1771840816895,
+      "tag": "0002_cute_forgotten_one",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1771842488694,
+      "tag": "0003_cynical_frank_castle",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1771871919675,
+      "tag": "0004_broad_captain_midlands",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1771872809411,
+      "tag": "0005_gray_proteus",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1771873275373,
+      "tag": "0006_loving_wonder_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1771878875845,
+      "tag": "0007_large_red_ghost",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1771880931044,
+      "tag": "0008_outstanding_pete_wisdom",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1772207359904,
+      "tag": "0009_flowery_doctor_doom",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1772715815964,
+      "tag": "0010_flawless_sunspot",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1772957673268,
+      "tag": "0011_military_pepper_potts",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1772960209917,
+      "tag": "0012_real_sue_storm",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1773048281533,
+      "tag": "0013_swift_riptide",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "5",
+      "when": 1773049044403,
+      "tag": "0014_messy_brother_voodoo",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "query": "SELECT * FROM testimonials WHERE clientEmail = 'manus@test.com' ORDER BY createdAt DESC LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 46qLADBRp6T678j.414b6f620258 --database LJnj9egkWpcGSwAXFPWMea --execute SELECT * FROM testimonials WHERE clientEmail = 'manus@test.com' ORDER BY createdAt DESC LIMIT 1;",
+  "rows": [
+    {
+      "id": "30002",
+      "clientName": "Manus Test",
+      "clientEmail": "manus@test.com",
+      "clientPhone": "+34612345678",
+      "content": "Ceci est un témoignage test de Manus. Maelle Mars est une excellente médium avec une grande capacité de clairvoyance.",
+      "rating": "5",
+      "consultationType": "NULL",
+      "status": "pending",
+      "adminNotes": "NULL",
+      "publishedAt": "NULL",
+      "createdAt": "2026-03-07 10:17:00",
+      "updatedAt": "2026-03-07 10:17:00"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tclientName\tclientEmail\tclientPhone\tcontent\trating\tconsultationType\tstatus\tadminNotes\tpublishedAt\tcreatedAt\tupdatedAt\n30002\tManus Test\tmanus@test.com\t+34612345678\tCeci est un témoignage test de Manus. Maelle Mars est une excellente médium avec une grande capacité de clairvoyance.\t5\tNULL\tpending\tNULL\tNULL\t2026-03-07 10:17:00\t2026-03-07 10:17:00\n",
+  "stderr": "",
+  "execution_time_ms": 406
+}

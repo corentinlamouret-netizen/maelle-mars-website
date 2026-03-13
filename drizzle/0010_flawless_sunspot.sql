@@ -1,0 +1,2 @@
+ALTER TABLE `reservations` MODIFY COLUMN `consultationType` enum('10min','15min','25min','30min','40min','1hour') NOT NULL;--> statement-breakpoint
+ALTER TABLE `reservations_v2` MODIFY COLUMN `consultationType` enum('10min','15min','25min','30min','40min','1hour') NOT NULL;

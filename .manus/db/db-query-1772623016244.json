@@ -1,0 +1,32 @@
+{
+  "query": "SELECT * FROM users WHERE email = 'maellemarsmedium@gmail.com';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 46qLADBRp6T678j.414b6f620258 --database LJnj9egkWpcGSwAXFPWMea --execute SELECT * FROM users WHERE email = 'maellemarsmedium@gmail.com';",
+  "rows": [
+    {
+      "id": "1260039",
+      "openId": "maelle-mars-admin-f4df06d1-17ba-11f1-841d-961f3a2f74fb",
+      "name": "Maelle Mars",
+      "email": "maellemarsmedium@gmail.com",
+      "loginMethod": "oauth",
+      "role": "admin",
+      "createdAt": "2026-03-04 11:11:56",
+      "updatedAt": "2026-03-04 11:11:56",
+      "lastSignedIn": "2026-03-04 11:11:56"
+    },
+    {
+      "id": "1260045",
+      "openId": "jXWRRrHgrnVPkdLPGHQjV2",
+      "name": "Maelle Mars",
+      "email": "maellemarsmedium@gmail.com",
+      "loginMethod": "google",
+      "role": "user",
+      "createdAt": "2026-03-04 11:13:22",
+      "updatedAt": "2026-03-04 11:13:38",
+      "lastSignedIn": "2026-03-04 11:13:38"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\topenId\tname\temail\tloginMethod\trole\tcreatedAt\tupdatedAt\tlastSignedIn\n1260039\tmaelle-mars-admin-f4df06d1-17ba-11f1-841d-961f3a2f74fb\tMaelle Mars\tmaellemarsmedium@gmail.com\toauth\tadmin\t2026-03-04 11:11:56\t2026-03-04 11:11:56\t2026-03-04 11:11:56\n1260045\tjXWRRrHgrnVPkdLPGHQjV2\tMaelle Mars\tmaellemarsmedium@gmail.com\tgoogle\tuser\t2026-03-04 11:13:22\t2026-03-04 11:13:38\t2026-03-04 11:13:38\n",
+  "stderr": "",
+  "execution_time_ms": 358
+}

@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO events (\n  title,\n  description,\n  location,\n  latitude,\n  longitude,\n  eventDate,\n  startTime,\n  endTime,\n  maxAttendees,\n  currentAttendees,\n  price,\n  status\n) VALUES (\n  'Événement Spirituel - Perpignan',\n  'Rencontre spirituelle et consultation collective à Perpignan',\n  '35 Avenue Robert Emmanuelle Brousse, 66100 Perpignan',\n  '42.6886',\n  '2.8956',\n  '2026-06-13',\n  '14:00',\n  '17:00',\n  50,\n  0,\n  0,\n  'upcoming'\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 46qLADBRp6T678j.414b6f620258 --database LJnj9egkWpcGSwAXFPWMea --execute INSERT INTO events (\n  title,\n  description,\n  location,\n  latitude,\n  longitude,\n  eventDate,\n  startTime,\n  endTime,\n  maxAttendees,\n  currentAttendees,\n  price,\n  status\n) VALUES (\n  'Événement Spirituel - Perpignan',\n  'Rencontre spirituelle et consultation collective à Perpignan',\n  '35 Avenue Robert Emmanuelle Brousse, 66100 Perpignan',\n  '42.6886',\n  '2.8956',\n  '2026-06-13',\n  '14:00',\n  '17:00',\n  50,\n  0,\n  0,\n  'upcoming'\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 481
+}

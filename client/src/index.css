@@ -1,0 +1,335 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Mystique Céleste - Couleurs Primaires */
+  --primary: #e8b84f; /* Or lumineux */
+  --primary-foreground: #0a1628; /* Bleu nuit profond */
+  --sidebar-primary: #d4a040;
+  --sidebar-primary-foreground: #f5f5f5;
+  --chart-1: #e8b84f;
+  --chart-2: #ffc857;
+  --chart-3: #ffd700;
+  --chart-4: #ffed4e;
+  --chart-5: #ffff99;
+  
+  --radius: 0.65rem;
+  
+  /* Fond bleu clair et lumineux */
+  --background: #0d1b2a;
+  --foreground: #f5f5f5;
+  --card: #1a2f45;
+  --card-foreground: #f5f5f5;
+  --popover: #1a2f45;
+  --popover-foreground: #f5f5f5;
+  
+  /* Accents bleu clair */
+  --secondary: #2a4a6a;
+  --secondary-foreground: #e8dcc8;
+  --muted: #3a5a7a;
+  --muted-foreground: #b8c8d8;
+  --accent: #e8b84f;
+  --accent-foreground: #0a1628;
+  
+  /* Destructive */
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  
+  /* Bordures */
+  --border: rgba(212, 165, 116, 0.2);
+  --input: rgba(212, 165, 116, 0.15);
+  --ring: #d4a574;
+  
+  /* Sidebar */
+  --sidebar: #1a1a2e;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-accent: #d4a574;
+  --sidebar-accent-foreground: #1a1a2e;
+  --sidebar-border: rgba(212, 165, 116, 0.2);
+  --sidebar-ring: #d4a574;
+}
+
+.dark {
+  --primary: #e8b84f;
+  --primary-foreground: #0a1628;
+  --sidebar-primary: #d4a040;
+  --sidebar-primary-foreground: #f5f5f5;
+  --background: #0d1b2a;
+  --foreground: #f5f5f5;
+  --card: #1a2f45;
+  --card-foreground: #f5f5f5;
+  --popover: #1a1a2e;
+  --popover-foreground: #f5f5f5;
+  --secondary: #2d2d44;
+  --secondary-foreground: #e8dcc8;
+  --muted: #3a3a52;
+  --muted-foreground: #a8a8b8;
+  --accent: #d4a574;
+  --accent-foreground: #1a1a2e;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: rgba(212, 165, 116, 0.2);
+  --input: rgba(212, 165, 116, 0.15);
+  --ring: #d4a574;
+  --chart-1: #d4a574;
+  --chart-2: #b8860b;
+  --chart-3: #daa520;
+  --chart-4: #ffd700;
+  --chart-5: #ffed4e;
+  --sidebar: #1a1a2e;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-accent: #d4a574;
+  --sidebar-accent-foreground: #1a1a2e;
+  --sidebar-border: rgba(212, 165, 116, 0.2);
+  --sidebar-ring: #d4a574;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
+  
+  .title-script {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+  }
+  
+  .title-serif {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+  
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+  
+  /* Boutons stylisés pour Maelle Mars */
+  .btn-golden {
+    @apply px-8 py-3 rounded-full font-semibold transition-all duration-300;
+    background: linear-gradient(135deg, #d4a574 0%, #b8860b 100%);
+    color: #1a1a2e;
+    box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+  }
+  
+  .btn-golden:hover {
+    @apply transform scale-105;
+    box-shadow: 0 6px 25px rgba(212, 165, 116, 0.5);
+  }
+  
+  /* Icônes circulaires dorées */
+  .icon-circle {
+    @apply w-24 h-24 rounded-full flex items-center justify-center;
+    background: rgba(212, 165, 116, 0.15);
+    border: 2px solid #d4a574;
+    color: #d4a574;
+  }
+  
+  /* Cartes de témoignages */
+  .testimonial-card {
+    @apply p-6 rounded-lg;
+    background: linear-gradient(135deg, #e8dcc8 0%, #f5f0e8 100%);
+    color: #3a3a52;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Séparateur doré */
+  .divider-golden {
+    @apply h-0.5 bg-gradient-to-r from-transparent via-yellow-600 to-transparent my-8;
+  }
+  
+  /* Texte cursif */
+  .text-script {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    font-weight: 400;
+  }
+  
+  /* Effet de glow doré */
+  .glow-golden {
+    box-shadow: 0 0 20px rgba(212, 165, 116, 0.3);
+  }
+  
+  .glow-golden:hover {
+    box-shadow: 0 0 30px rgba(212, 165, 116, 0.6);
+  }
+}
+
+/* Animations personnalisées */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 165, 116, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 165, 116, 0.6);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+
+/* Animation de la bougie */
+@keyframes candleFlame {
+  0%, 100% {
+    transform: translateY(0px) scaleX(1);
+  }
+  25% {
+    transform: translateY(-2px) scaleX(0.95);
+  }
+  50% {
+    transform: translateY(-4px) scaleX(1.05);
+  }
+  75% {
+    transform: translateY(-1px) scaleX(0.98);
+  }
+}
+
+.animate-candle-flame {
+  animation: candleFlame 2s ease-in-out infinite;
+}
+
+/* Animation de scintillement */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+/* Animation de lueur */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(232, 184, 79, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(232, 184, 79, 0.6);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
