@@ -1,9 +1,3 @@
-/**
- * Quick example (matches curl usage):
- *   await callDataApi("Youtube/search", {
- *     query: { gl: "US", hl: "en", q: "manus" },
- *   })
- */
 import { ENV } from "./env";
 
 export type DataApiCallOptions = {
@@ -17,16 +11,20 @@ export async function callDataApi(
   apiId: string,
   options: DataApiCallOptions = {}
 ): Promise<unknown> {
-  if (!ENV.forgeApiUrl) {
-    throw new Error("BUILT_IN_FORGE_API_URL is not configured");
-  }
-  if (!ENV.forgeApiKey) {
-    throw new Error("BUILT_IN_FORGE_API_KEY is not configured");
+
+  if (!ENV.forgeApiUrl || !ENV.forgeApiKey) {
+    console.warn("Forge API not configured, skipping call:", apiId);
+    return null;
   }
 
-  // Build the full URL by appending the service path to the base URL
-  const baseUrl = ENV.forgeApiUrl.endsWith("/") ? ENV.forgeApiUrl : `${ENV.forgeApiUrl}/`;
-  const fullUrl = new URL("webdevtoken.v1.WebDevService/CallApi", baseUrl).toString();
+  const baseUrl = ENV.forgeApiUrl.endsWith("/")
+    ? ENV.forgeApiUrl
+    : `${ENV.forgeApiUrl}/`;
+
+  const fullUrl = new URL(
+    "webdevtoken.v1.WebDevService/CallApi",
+    baseUrl
+  ).toString();
 
   const response = await fetch(fullUrl, {
     method: "POST",
@@ -48,11 +46,12 @@ export async function callDataApi(
   if (!response.ok) {
     const detail = await response.text().catch(() => "");
     throw new Error(
-      `Data API request failed (${response.status} ${response.statusText})${detail ? `: ${detail}` : ""}`
+      `Data API request failed (${response.status})${detail ? `: ${detail}` : ""}`
     );
   }
 
   const payload = await response.json().catch(() => ({}));
+
   if (payload && typeof payload === "object" && "jsonData" in payload) {
     try {
       return JSON.parse((payload as Record<string, string>).jsonData ?? "{}");
@@ -60,5 +59,6 @@ export async function callDataApi(
       return (payload as Record<string, unknown>).jsonData;
     }
   }
+
   return payload;
 }
