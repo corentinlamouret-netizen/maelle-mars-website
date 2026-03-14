@@ -1,65 +1,43 @@
 import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
-import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { registerOAuthRoutes } from "./oauth";
+
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { initializeSecurity } from "./security";
+
 import { startReminderScheduler } from "../reminder-scheduler";
 import { handlePayPalWebhook } from "../paypal-webhook";
-
-function isPortAvailable(port: number): Promise<boolean> {
-  return new Promise(resolve => {
-    const server = net.createServer();
-    server.listen(port, () => {
-      server.close(() => resolve(true));
-    });
-    server.on("error", () => resolve(false));
-  });
-}
-
-async function findAvailablePort(startPort: number = 3000): Promise<number> {
-  for (let port = startPort; port < startPort + 20; port++) {
-    if (await isPortAvailable(port)) {
-      return port;
-    }
-  }
-  throw new Error(`No available port found starting from ${startPort}`);
-}
 
 async function startServer() {
   const app = express();
   const server = createServer(app);
-  
-  // Trust proxy headers (needed for rate limiting behind reverse proxy)
-  app.set('trust proxy', 1);
-  
-  // Initialize security middleware first
+
+  app.set("trust proxy", 1);
+
   initializeSecurity(app);
-  
-  // Configure body parser with larger size limit for file uploads
+
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
-  // OAuth callback under /api/oauth/callback
-  registerOAuthRoutes(app);
-  
-  // PayPal Webhook endpoint
+
+  // PayPal webhook
   app.post("/api/webhooks/paypal", async (req, res) => {
     try {
-      console.log("[PayPal Webhook] Received webhook event");
+      console.log("[PayPal Webhook] Received webhook");
       await handlePayPalWebhook(req.body);
       res.json({ success: true });
     } catch (error) {
-      console.error("[PayPal Webhook] Error processing webhook:", error);
-      res.status(500).json({ success: false, error: error instanceof Error ? error.message : "Unknown error" });
+      console.error("[PayPal Webhook] Error:", error);
+      res.status(500).json({
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown error",
+      });
     }
   });
-  
-  // tRPC API
 
+  // tRPC API
   app.use(
     "/api/trpc",
     createExpressMiddleware({
@@ -67,31 +45,23 @@ async function startServer() {
       createContext,
     })
   );
-  // development mode uses Vite, production mode uses static files
+
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  const preferredPort = parseInt(process.env.PORT || "3000");
-  const port = await findAvailablePort(preferredPort);
-
-  if (port !== preferredPort) {
-    console.log(`Port ${preferredPort} is busy, using port ${port} instead`);
-  }
+  const port = parseInt(process.env.PORT || "3000");
 
   server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
-    
-    // Démarrer le scheduler de rappels de consultation
+    console.log(`Server running on port ${port}`);
+
     try {
       startReminderScheduler();
     } catch (error) {
       console.error("Failed to start reminder scheduler:", error);
     }
-    
-
   });
 }
 
