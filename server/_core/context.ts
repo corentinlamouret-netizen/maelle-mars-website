@@ -1,6 +1,6 @@
 import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
 import type { User } from "../../drizzle/schema";
-import { sdk } from "./sdk";
+// import { sdk } from "./sdk"; // Désactivé si Manus n'est pas utilisé
 
 export type TrpcContext = {
   req: CreateExpressContextOptions["req"];
@@ -13,10 +13,14 @@ export async function createContext(
 ): Promise<TrpcContext> {
   let user: User | null = null;
 
+  // ⚠️ Si tu n'utilises plus Manus, on peut mettre une authentification factice ou nulle
   try {
-    user = await sdk.authenticateRequest(opts.req);
+    // user = await sdk.authenticateRequest(opts.req);
+    // Remplacement par null pour supprimer Manus
+    user = null;
   } catch (error) {
-    // Authentication is optional for public procedures.
+    // Log optionnel pour debug
+    console.warn("Authentication skipped:", (error as Error).message);
     user = null;
   }
 
